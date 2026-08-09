@@ -1,29 +1,58 @@
-const mobileMenu = document.getElementById('mobile-menu');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-menu a');
+document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.querySelector(".navbar-container");
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll(".nav-link");
 
-// เมื่อกดปุ่ม Hamburger ให้เปิด/ปิดเมนู
-mobileMenu.addEventListener('click', () => {
-    mobileMenu.classList.toggle('is-active');
-    navMenu.classList.toggle('active');
-});
+    // 1. สลับการแสดงผลเมนูบนมือถือ (Mobile Hamburger Menu)
+    menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
 
-// เมื่อกดเลือกเมนูแล้ว ให้หุบเมนูกลับอัตโนมัติ และสโครลไปจุดนั้น
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // หุบเมนูกลับ
-        mobileMenu.classList.remove('is-active');
-        navMenu.classList.remove('active');
+    // ปิดเมนูอัตโนมัติเมื่อกดคลิกเลือกหัวข้อบนมือถือ
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("show");
+        });
+    });
 
-        // Smooth scroll
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        if (targetSection) {
-            targetSection.scrollIntoView({
-                behavior: 'smooth'
-            });
+    // 2. ปรับ Navbar เปลี่ยนสีเมื่อเลื่อนหน้าจอลง (Header Scroll Effect)
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
         }
+
+        // 3. Highlight ปุ่มเมนูตาม Section ที่กำลังดูอยู่ (Active Section)
+        let current = "";
+        const sections = document.querySelectorAll("section");
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("active");
+            }
+        });
+
+        // 4. Scroll Reveal Animation (ให้การ์ด/เนื้อหาค่อยๆ ลอยขึ้น)
+        const reveals = document.querySelectorAll(".reveal");
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            const elementVisible = 100;
+
+            if (elementTop < windowHeight - elementVisible) {
+                el.classList.add("active");
+            }
+        });
     });
 });

@@ -3,42 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ร้านหมาล่าหม้อไฟ & เสียบไม้ - Mala Hotpot</title>
-    <link rel="stylesheet" href="main.css">
+    <title>ร้านหมาล่า- Mala </title>
     <!-- Google Fonts for Thai Language -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main2.css">
 </head>
 <body>
-    
-<header>
-    <div class="logo">🔥 เฮง เฮง <span>หมาล่า</span></div>
-    
-    <!-- ปุ่ม Hamburger สำหรับมือถือ -->
-    <div class="menu-toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </div>
 
-    <!-- รายการเมนูบาร์ -->
-    <nav class="nav-menu">
-        <ul>
-            <li><a href="#home">หน้าแรก</a></li>
-            <li><a href="#about">เกี่ยวกับร้าน</a></li>
-            <li><a href="#menu">เมนูแนะนำ</a></li>
-            <li><a href="#gallery">บรรยากาศร้าน</a></li>
-            <li><a href="#contact">ติดต่อเรา</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- Header & Navigation -->
+    <header class="navbar-container">
+        <a href="#home" class="logo">ร้านหมาล่า</a>
+
+        <!-- ปุ่ม Hamburger สำหรับมือถือ -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- แถบเมนู -->
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="#home" class="nav-link active">หน้าแรก</a></li>
+                <li><a href="#about" class="nav-link">เกี่ยวกับร้าน</a></li>
+                <li><a href="#menu" class="nav-link">เมนูแนะนำ</a></li>
+                <li><a href="#gallery" class="nav-link">บรรยากาศร้าน</a></li>
+                <li><a href="#contact" class="btn-contact nav-link">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero" id="home">
+        <!-- วิดีโอพื้นหลัง -->
+        <video autoplay loop muted playsinline id="bg-video">
+            <source src="Picture/your-mala-video.mp4" type="video/mp4">
+            เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+        </video>
+
+        <!-- Overlay แผ่นกรองสีดำ -->
+        <div class="hero-overlay"></div>
+
+        <!-- เนื้อหาตรงกลาง -->
         <div class="hero-content">
-            <h1>ลิ้มลองความเผ็ดชา... ระดับตำนาน</h1>
-            <p>หมาล่าสูตรต้นตำรับ พริกเผ็ดชาถึงใจ วัตถุดิบสดใหม่ทุกวัน</p>
-            <a href="#menu" class="btn">ดูเมนูเด็ด</a>
+            <h1>ร้านหมาล่าหม้อไฟ & เสียบไม้</h1>
+            <p>รสชาติเข้มข้น เผ็ดชาถึงใจ สดใหม่ทุกวัน</p>
+            <a href="#menu" class="btn-primary">ดูเมนูอาหาร</a>
         </div>
+
+        <!-- ปุ่มเลื่อนลง -->
+        <a href="#about" class="scroll-down">
+            <span>เลื่อนลง</span>
+            <div class="arrow"></div>
+        </a>
     </section>
 
     <!-- About Section -->
@@ -53,17 +70,17 @@
     <section id="menu" class="menu">
         <h2>เมนูแนะนำที่ไม่ควรพลาด</h2>
         <div class="menu-grid">
-            <div class="menu-card">
+            <div class="menu-card reveal">
                 <div class="menu-img-placeholder">🔥</div>
                 <h3>หมาล่าเสียบไม้</h3>
                 <p>เนื้อหมู เนื้อวัว ผักสดๆ ย่างเตาถ่านหอมๆ ปรับระดับความเผ็ดได้ตามใจชอบ</p>
             </div>
-            <div class="menu-card">
+            <div class="menu-card reveal">
                 <div class="menu-img-placeholder">🍲</div>
                 <h3>ซุปหมาล่าหม้อไฟ</h3>
                 <p>น้ำซุปหมาล่าเข้มข้น ซดร้อนๆ เข้มข้นถึงใจ สายชาต้มสุกี้ต้องลอง</p>
             </div>
-            <div class="menu-card">
+            <div class="menu-card reveal">
                 <div class="menu-img-placeholder">🥢</div>
                 <h3>ชุดเนื้อสไลด์พรีเมียม</h3>
                 <p>เนื้อวัวสายพันธุ์ดี สไลด์บางกำลังดี จุ่มซุปหมาล่าเพียง 10 วินาที ละลายในปาก</p>
@@ -71,33 +88,33 @@
         </div>
     </section>
 
-    <!-- Gallery / Atmosphere -->
+    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <h2>บรรยากาศภายในร้าน</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">โซนโต๊ะอาหารสบายๆ</div>
-            <div class="gallery-item">บาร์ตักวัตถุดิบสดใหม่</div>
-            <div class="gallery-item">มุมถ่ายรูปสไตล์นีออน</div>
+            <div class="gallery-item reveal">โซนโต๊ะอาหารสบายๆ</div>
+            <div class="gallery-item reveal">บาร์ตักวัตถุดิบสดใหม่</div>
+            <div class="gallery-item reveal">มุมถ่ายรูปสไตล์นีออน</div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>ข้อมูลการเดินทาง & ติดต่อ</h2>
-        <div class="contact-info">
+        <div class="contact-info reveal">
             <p><strong>📍 ที่ตั้ง:</strong> 123 ถนนสายเผ็ดชา แขวงอร่อย เขตเมือง กรุงเทพฯ</p>
             <p><strong>⏰ เวลาเปิด-ปิด:</strong> เปิดทุกวัน 16:00 - 23:00 น.</p>
-            <p><strong>📞 โทรศัพท์:</strong> 081-234-5678</p>
+            <p><strong>📞 โทรศัพท์:</strong> xxx-xxx-xxxx</p>
             <p><strong>LINE:</strong> @malahotpot</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 ร้านหมาล่า Spicy. All Rights Reserved.</p>
+        <p>&copy; 2026 ร้านหมาล่า เสียบไม้. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript Link -->
     <script src="script.js"></script>
 </body>
 </html>
